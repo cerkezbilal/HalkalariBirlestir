@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
 
     GameObject SeciliObje;//Secilen cember
-    GameObject SeciliStand;//Cemberi taşımak istediğimiz stand
+    GameObject SeciliStand;//Cemberi ait olduğu stand
     Cember _cember;//Secilen cemberin script dosyasına ulaşacağımız değişken
     public bool HareketVar;//Birden fazla çember seçilmesini önlemek için
 
@@ -28,10 +28,14 @@ public class GameManager : MonoBehaviour
 
                     if(SeciliObje != null && SeciliStand!= hit.collider.gameObject)
                     {
-                        //Seçili bir çember var ve çemberin gitmesini istediğimiz stand da seçili
+                        //Seçili bir çember var ve çemberin gitmesini istediğimiz stand da seçili ve çemberin ait olduğu standtan farklı ise
                         //Çember Hareket edecek
 
+                        Stand _Stand = hit.collider.GetComponent<Stand>();//Tıkladığım yeni standı alıyorum.
+                        SeciliStand.GetComponent<Stand>().SoketDegistirmeIslemleri(SeciliObje);//Çemberi seçtiğimiz Standtan seçtiğimiz çemberi çıkarıyoruz.
 
+
+                        
                     }
                     else
                     {
@@ -45,9 +49,9 @@ public class GameManager : MonoBehaviour
                         if (_cember.HareketEdebilirMi)
                         {
                             //Cember hareket edebiliyorsa
-                            //Cemberi hareket ettir. Parametre olarak işlem: Seçim, Stand: gerek yok stand, sokete gerek yok, Gidilecek obje cemberin ait olduğu standta bulunan hareket objesi
+                            //Cemberi hareket ettir. Parametre olarak işlem: Seçim, Stand: gerekyok stand, sokete gerek yok, Gidilecek obje cemberin ait olduğu standta bulunan hareket objesi
                             _cember.HareketEt("Secim", null, null, _cember._AitOlduguStand.GetComponent<Stand>().HareketPozisyonu);
-                            SeciliStand = _cember._AitOlduguStand;//Secilen Platformda cemberin ait olduğu standtı veriyoruz.
+                            SeciliStand = _cember._AitOlduguStand;//Secilen Standa cemberin ait olduğu standtı veriyoruz.
                         }
 
                        
