@@ -13,10 +13,7 @@ public class Stand : MonoBehaviour
     [SerializeField]
     private GameManager _GameManager;//Bununla çember hareketleri kontrol edilecek
 
-    private void Awake()
-    {
-        _Cemberler = new List<GameObject>();
-    }
+   
 
    public GameObject EnUsttekiCemberiVer()
     {

@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
 
     GameObject SeciliObje;//Secilen cember
-    GameObject SeciliPlatform;//Cemberi taşımak istediğimiz stand
+    GameObject SeciliStand;//Cemberi taşımak istediğimiz stand
     Cember _cember;//Secilen cemberin script dosyasına ulaşacağımız değişken
     public bool HareketVar;//Birden fazla çember seçilmesini önlemek için
 
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
                 {
                     //Çemberi seçme ve Eğer çember seçili ise başka stand a tıklandığında çemberin oraya gitmesi
 
-                    if(SeciliObje != null && SeciliPlatform != hit.collider.gameObject)
+                    if(SeciliObje != null && SeciliStand!= hit.collider.gameObject)
                     {
                         //Seçili bir çember var ve çemberin gitmesini istediğimiz stand da seçili
                         //Çember Hareket edecek
@@ -42,7 +42,15 @@ public class GameManager : MonoBehaviour
                         _cember = SeciliObje.GetComponent<Cember>();//Seçtiğimiz cemberin Cember adlı scriptine ulaştık.
                         HareketVar = true;//Hareket başladı
 
-                        //Seçilen çemberin hareket etme durumu var mı?
+                        if (_cember.HareketEdebilirMi)
+                        {
+                            //Cember hareket edebiliyorsa
+                            //Cemberi hareket ettir. Parametre olarak işlem: Seçim, Stand: gerek yok stand, sokete gerek yok, Gidilecek obje cemberin ait olduğu standta bulunan hareket objesi
+                            _cember.HareketEt("Secim", null, null, _cember._AitOlduguStand.GetComponent<Stand>().HareketPozisyonu);
+                            SeciliStand = _cember._AitOlduguStand;//Secilen Platformda cemberin ait olduğu standtı veriyoruz.
+                        }
+
+                       
 
                     }
                 }
