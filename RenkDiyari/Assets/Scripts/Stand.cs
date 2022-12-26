@@ -18,14 +18,10 @@ public class Stand : MonoBehaviour
         _Cemberler = new List<GameObject>();
     }
 
-    void Start()
+   public GameObject EnUsttekiCemberiVer()
     {
-        
-    }
+        //Standtaki en son yani en üstteki çember yakalamak için listenin son elemanını almak ile olur
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return _Cemberler[_Cemberler.Count - 1];
     }
 }

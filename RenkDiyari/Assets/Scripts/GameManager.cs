@@ -28,15 +28,21 @@ public class GameManager : MonoBehaviour
 
                     if(SeciliObje != null && SeciliPlatform != hit.collider.gameObject)
                     {
-                        //Eğer bir çember seçildiyse(seciliObje) ve seçtiğim stand çemberi aldığım standtan başka bir stand ise çemberi oraya gönder
-                        //Çember Hareket
+                        //Seçili bir çember var ve çemberin gitmesini istediğimiz stand da seçili
+                        //Çember Hareket edecek
 
 
                     }
                     else
                     {
-                        //Çember seçimi
-                        Stand _Stand = hit.collider.GetComponent<Stand>();
+                        //Stand seçme işlemi ve çember seçme işlemi
+                        Stand _Stand = hit.collider.GetComponent<Stand>();//Stand scriptine ulaşmak için
+
+                        SeciliObje = _Stand.EnUsttekiCemberiVer();//Stand ın en üstteki çemberini seciliobje değişkenine atadık
+                        _cember = SeciliObje.GetComponent<Cember>();//Seçtiğimiz cemberin Cember adlı scriptine ulaştık.
+                        HareketVar = true;//Hareket başladı
+
+                        //Seçilen çemberin hareket etme durumu var mı?
 
                     }
                 }
