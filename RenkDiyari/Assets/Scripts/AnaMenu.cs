@@ -26,6 +26,6 @@ public class AnaMenu : MonoBehaviour
 
     public void startGame()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level0");
     }
 }

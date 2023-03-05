@@ -148,9 +148,7 @@ public class GameManager : MonoBehaviour
                             //Cemberi hareket ettir. Parametre olarak işlem: Seçim, Stand: gerekyok stand, sokete gerek yok, Gidilecek obje cemberin ait olduğu standta bulunan hareket objesi
                             _cember.HareketEt("Secim", null, null, _cember._AitOlduguStand.GetComponent<Stand>().HareketPozisyonu);
                             SeciliStand = _cember._AitOlduguStand;//Secilen Standa cemberin ait olduğu standtı veriyoruz.
-                        }
-
-                       
+                        } 
 
                     }
                 }
